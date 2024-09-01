@@ -3,6 +3,113 @@
     padding: 0 !important;
     box-sizing: border-box !important;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.wrapper {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  left: 100px;
+}
+.wrapper i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.wrapper i:active{
+  transform: translateY(-50%) scale(0.85);
+}
+.wrapper i:first-child{
+  left: -22px;
+}
+.wrapper i:last-child{
+  right: -22px;
+}
+.wrapper .carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+.carousel :where(.card, .img) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .card {
+  scroll-snap-align: start;
+  height: 342px;
+  list-style: none;
+  background: #fff;
+  cursor: pointer;
+  padding-bottom: 15px;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.carousel .card .img {
+  background: #8B53FF;
+  height: 148px;
+  width: 148px;
+  border-radius: 50%;
+}
+.card .img img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+}
+.carousel .card h2 {
+  font-weight: 500;
+  font-size: 1.56rem;
+  margin: 30px 0 5px;
+}
+.carousel .card span {
+  color: #6A6D78;
+  font-size: 1.31rem;
+}
+@media screen and (max-width: 900px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+}
+@media screen and (max-width: 600px) {
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
+  }
+}
+body{
+    /* overflow-x: hidden !important; */
+}
 .navbar{
 z-index: 2 !important;
 position: sticky !important;
@@ -12,7 +119,7 @@ flex-direction: column !important;
 
 }
 .cust-navbar{
-   /* margin-left: 120px !important; */
+   /* padding: 0 20px; */
  
 }
 
@@ -28,7 +135,28 @@ padding: 0 20px;
 .bg-body-tertiary{
     background-color: #ffff !important;
 }
+.navbar-nav{
+    /* display: flex !important; */
+    /* gap: 20px !important; */
+}
 
+.navbar-nav li {
+    padding: 0 20px;
+}
+
+.nav-item a {
+    text-decoration: none; /* Removes underline */
+    padding: 5px 20px; /* Adjust padding as needed */
+    border: 1px solid transparent; /* Transparent border */
+    border-radius: 20px;
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+.nav-item a:hover{
+    border-color: #53bab6; /* Change to desired color */
+    border-radius: 20px;
+    outline: none;
+}
 
 #video-banner{
     width: 100%;
@@ -59,10 +187,10 @@ padding: 0 20px;
     width: 80px;
     height: 80px;
     object-fit: cover;
-
-
 }
-
+.row .heading h3{
+    color: #53bab6;
+}
 
  .row .col h3{
 margin-top: -60px;
@@ -86,7 +214,20 @@ width: 100%;
 
 #card-section{
     margin-top: 150px ;
+    position: relative;
 }
+
+.milk-left-image{
+    background-image: url(img/milk-wave-pattern-left.webp);
+    background-size: cover;
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    left: -350px;
+    top: 100px;
+}
+
+
 
 .para{
     font-size: 10px;
@@ -164,4 +305,34 @@ padding-top: 0px !important;
         width: 100% !important;
         padding: 0 150px;
         }
+}
+
+#images .col .card{
+    /* transition: all 5s linear; */
+    
+}
+
+#images .col .card:hover{
+/* width: 220px !important;
+opacity: 0; */
+}
+
+
+
+.card{
+    animation: cardShow;
+    animation-timeline: view();
+}
+
+@keyframes cardShow {
+    from{
+        opacity: 0;
+        transform: translateY(200px);
+    }
+    
+    to{
+transform: translateY(0);
+opacity: 1;
+    }
+    
 }
